@@ -14,7 +14,7 @@ type DB struct {
 
 // ConnectDB : connecting DB
 func ConnectDB() *DB {
-	db, err := gorm.Open("mysql", "cms_faq:yxvy3QfT8vjh7HTu@(10.8.5.252)/cms_faq?charset=utf8&parseTime=True&loc=Local")
+	db, err := gorm.Open("mysql", "root:root@(localhsot)/teste?charset=utf8&parseTime=True&loc=Local")
 
 	if err != nil {
 		fmt.Println(err)
