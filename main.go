@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
-
 	"./models"
+	"github.com/gin-gonic/gin"
 
 	"./db"
 )
@@ -11,11 +10,17 @@ import (
 type Cad_Articles = models.Cad_Articles
 
 func main() {
+	r := gin.Default()
+
+	r.GET("/teste", getArticles)
+	r.Run()
+}
+
+func getArticles(g *gin.Context) {
 	db := db.ConnectDB()
 	defer db.Close()
 
 	articles := Cad_Articles{}
 	articles.GetArticles(db)
-
-	fmt.Println(articles, "blah")
+	g.JSON(200, articles)
 }
